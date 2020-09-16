@@ -20,3 +20,9 @@ C:\Users\user-pc\Documents\GitHub\finalPoject\server\WEB_API\DTO\obj\Debug\DTO.c
 C:\Users\user-pc\Documents\GitHub\finalPoject\server\WEB_API\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 C:\Users\user-pc\Documents\GitHub\finalPoject\server\WEB_API\DTO\obj\Debug\DTO.dll
 C:\Users\user-pc\Documents\GitHub\finalPoject\server\WEB_API\DTO\obj\Debug\DTO.pdb
+C:\Users\User\Desktop\finalProject\server\WEB_API\DTO\bin\Debug\DTO.dll
+C:\Users\User\Desktop\finalProject\server\WEB_API\DTO\bin\Debug\DTO.pdb
+C:\Users\User\Desktop\finalProject\server\WEB_API\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+C:\Users\User\Desktop\finalProject\server\WEB_API\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\finalProject\server\WEB_API\DTO\obj\Debug\DTO.dll
+C:\Users\User\Desktop\finalProject\server\WEB_API\DTO\obj\Debug\DTO.pdb
