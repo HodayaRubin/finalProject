@@ -1,0 +1,20 @@
+<div *ngFor="let item of menuDetailsByCategory">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{item.nameDose}}</mat-card-title>
+            <mat-card-subtitle>
+                {{item.description}} {{' ₪ '+item.price}}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div>
+                <img class='image' [src]="'http://localhost:51437/src/images/products/'+item.category+'/'+item.image">
+            </div>
+            <hr>
+            <ngb-rating class="star-rating" *ngIf="item" [rate]="item.rateDose" [readonly]="true"></ngb-rating>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-flat-button color="primary" (click)="focusTab()">הזמן כעת </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

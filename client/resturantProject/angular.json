@@ -24,7 +24,7 @@
                             "src/assets",
                             {
                                 "glob": "**/*",
-                                "input": "../WEB_API/DAL/src/images",
+                                "input": "http://localhost:51437/WEB_API/DAL/src/images",
                                 "output": "./assets/images/"
                             },
                             {
@@ -36,7 +36,8 @@
                         "styles": [
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "src/custom-theme.scss",
-                            "src/styles.css"
+                            "src/styles.css",
+                            "src/app/components/user/category-menu-swiper/swiper-bundle.min.css"
                         ],
                         "scripts": []
                     },

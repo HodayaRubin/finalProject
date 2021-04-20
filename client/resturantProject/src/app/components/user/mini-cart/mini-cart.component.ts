@@ -6,6 +6,7 @@ import { MenuService } from 'src/app/shared/services/menu.service';
 import { MatDialog } from '@angular/material/dialog';
 import { RemoveProductComponent } from '../dialogs/remove-product/remove-product.component';
 import { InventDetails } from 'src/app/shared/modals/invent-details';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,57 +16,76 @@ import { InventDetails } from 'src/app/shared/modals/invent-details';
 })
 export class MiniCartComponent implements OnInit {
 
- 
-  itemsInCart: InventDetails[];
+
+  itemsInCart: any[]=[];
   menuDetails: Menu[] = [];
+  userName: string;
+  disableInvent: boolean = false;
+  closeCart: any;
+  Totalprice: number;
+  isAcceptance: boolean;
+
+
   constructor(
-    private visitersOrderManagementService: VisitersOrderManagementService,
+    public visitersOrderManagementService: VisitersOrderManagementService,
     private userService: UserService, private menu: MenuService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) { }
+
 
   ngOnInit(): void {
     this.visitersOrderManagementService.cart = this.userService.InventDose.inventDetails;
-    this.itemsInCart = this.visitersOrderManagementService.cart;
-    // this.visitersOrderManagementService.subjectCart.subscribe(res=>{
-    //   this.menu.getAllMenuDetails().subscribe(
-    //     (res: any) => {
-    //       this.menuDetails = res;
+    this.itemsInCart = this.visitersOrderManagementService.fullCart;
+    var currentUser = this.userService.CurrentUser;
+    this.userName = currentUser.firstName + " " + currentUser.lastName;
 
-
-    //       }
-    //       );
-    //     });
-    // })
-
-    // this.menu.getAllMenuDetails().subscribe(
-    //   (res: any) => {
-    //     this.menuDetails = res;
-
-    //     this.cart = this.userService.InventDose.inventDetails.map(id => {
-    //       let m=this.menuDetails.find(item => item.id == id.idMenu)
-    //       return {
-    //         idDose: id.idDose,
-    //         menu: m.nameDose + '\n' +m.price +' ₪ ',           
-    //         amount: id.amount,
-
-    //       }
-    //     }
-    //     );
-    //   });
   }
+  getTotal() {
+    if (this.itemsInCart&&this.itemsInCart.length>0) {
+      this.Totalprice = 0;
+      this.itemsInCart.forEach(item => {
+        this.Totalprice += item.price * item.amount
+      });
+      return this.Totalprice;
+    }
 
-  addProduct(itemId) {
-    // this.visitersOrderManagementService.addOrderToCart(item);
-    this.visitersOrderManagementService.plusProductAmount(itemId);
+  }
+  addProduct(item) {
+    //item.amount++;
+    this.visitersOrderManagementService.plusProductAmount(item.id);
   }
   addInvent() {
-    this.visitersOrderManagementService.addInvent().subscribe(res=>{
-
-    })
+    //this.router.navigate(['/prePayment']);
+    // this.visitersOrderManagementService.addInvent().subscribe(res => {
+    // })
+    // this.router.navigate(['/payment']);
+    this.visitersOrderManagementService.disablePrePaymentCart=true;  
+    this.visitersOrderManagementService.disableInventCart=true;
+    // this.visitersOrderManagementService.fullCart=[];
   }
-  openDialogRemove(itemId) {
-    this.dialog.open(RemoveProductComponent, { data:  itemId});
+  lessProduct(item) {
+    if (item.amount > 1)
+     // item.amount--;
+    this.visitersOrderManagementService.MinusProductAmount(item.id);
+  }
+  removeOrder(){
+    this.itemsInCart = [];
+    this.visitersOrderManagementService.fullCart=[];
+    this.visitersOrderManagementService.disableInventCart = true;
+
+  }
+  openDialogRemove(itemId, index) {
+    console.log(this.itemsInCart.length)
+    var dialog = this.dialog.open(RemoveProductComponent, { data: { itemId, index, 0:0, close: this.closeCart } });
+    dialog.afterClosed().subscribe(result => {
+      this.closeCart = result;
+      if (this.itemsInCart.length == 0)
+        this.visitersOrderManagementService.disableInventCart = true;
+      console.log(this.closeCart);
+      console.log(this.itemsInCart.length)
+
+    });
   }
 
 }

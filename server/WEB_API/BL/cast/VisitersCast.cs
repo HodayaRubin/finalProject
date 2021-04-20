@@ -17,7 +17,7 @@ namespace BL.cast
                 return null;
             return new VisitersDTO()
             {
-                ld = item.ld,
+                Id = item.ld,
                 FirstName = item.FirstName,
                 LastName = item.LastName,
                 Phone = item.Phone,
@@ -25,7 +25,8 @@ namespace BL.cast
                 Mail = item.Mail,
                 Password = item.Password,
                 NameUser = item.NameUser,
-            };
+                lastDateEnter = item.lastDateEnter,
+        };
         }
 
         //list to dto
@@ -38,7 +39,7 @@ namespace BL.cast
         {
             return new Visiters()
             {
-                ld = item.ld,
+                ld = item.Id,
                 FirstName = item.FirstName,
                 LastName = item.LastName,
                 Phone = item.Phone,
@@ -46,6 +47,7 @@ namespace BL.cast
                 Mail = item.Mail,
                 Password = item.Password,
                 NameUser = item.NameUser,
+                lastDateEnter = item.lastDateEnter,
             };
         }
         //list to dal

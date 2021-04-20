@@ -19,6 +19,8 @@ namespace DAL
         {
             this.CurrentEmployee = new HashSet<CurrentEmployee>();
             this.InventDose = new HashSet<InventDose>();
+            this.managerMessage = new HashSet<managerMessage>();
+            this.UserCalander = new HashSet<UserCalander>();
         }
     
         public int Id { get; set; }
@@ -35,5 +37,9 @@ namespace DAL
         public virtual EmployeesTypes EmployeesTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InventDose> InventDose { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<managerMessage> managerMessage { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserCalander> UserCalander { get; set; }
     }
 }

@@ -8,14 +8,37 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CategoryService {
  
-  url: string = "http://localhost:51437/api/Category";
+  URL: string = "http://localhost:51437/api/Category";
+  category={
+    Id:"", 
+    nameCategory:"",
+  }
 
   constructor(private http: HttpClient) { }
   getNameCategoryById(id:number){
-    return this.http.get(`${this.url}/GetCategoryName`)
+    return this.http.get(`${this.URL}/GetCategoryName/${id}`)
   }
 
   getCategoryList():Observable<Category[]> {
-    return this.http.get<Category[]>(`${this.url}/GetAllCategoryList`);
+    return this.http.get<Category[]>(`${this.URL}/GetAllCategoryList`);
   }
+
+  addNewCategory(categoryName):Observable<Category>{
+    this.category.nameCategory=categoryName
+    return this.http.post<Category>(`${this.URL}/AddCategory`,this.category);
+  }
+  deleteCategory(data):Observable<Category>{
+    return this.http.post<Category>(`${this.URL}/DeleteCategory`,data);
+  }
+  editCategory(data):Observable<Category>{
+    return this.http.post<Category>(`${this.URL}/UpdateCategory`,data);
+  }
+  getNewCategoryList():Observable<Category[]> {
+    return this.http.get<Category[]>(`${this.URL}/GetNewCategoryList`);
+  }
+  getfaveriteCategoryList():Observable<Category[]> {
+    return this.http.get<Category[]>(`${this.URL}/GetFavoriteCategoryList`);
+  }
+
+  
 }

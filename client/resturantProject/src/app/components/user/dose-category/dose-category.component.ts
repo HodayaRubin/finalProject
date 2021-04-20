@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Menu } from 'src/app/shared/modals/menu';
 import { MenuService } from 'src/app/shared/services/menu.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { VisitersOrderManagementService } from 'src/app/shared/services/visiters-order-management.service';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
+import { InRestaurantService } from 'src/app/shared/services/in-restaurant.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogForAddToCartComponent } from '../../in-resuarant/dialog-for-add-to-cart/dialog-for-add-to-cart.component';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-dose-category',
@@ -12,7 +16,8 @@ import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class DoseCategoryComponent implements OnInit {
 
-  isMiniCartOpen:boolean;
+  @Input() Restaurant: boolean;
+  isMiniCartOpen: boolean;
   InputIdCategory: number;
   nameCategory: string;
   error: any;
@@ -21,10 +26,12 @@ export class DoseCategoryComponent implements OnInit {
   constructor(public menuService: MenuService,
     config: NgbRatingConfig,
     public categoryService: CategoryService,
-    public visiterOrderManagment: VisitersOrderManagementService) {
-      config.max = 5;
-      config.readonly = true;
-     }
+    public visiterOrderManagment: VisitersOrderManagementService,
+    public inRestaurant: InRestaurantService,
+    public user:UserService,
+    public dialog: MatDialog) {
+    config.max = 5;
+  }
 
   ngOnInit(): void {
     this.menuService.subjectMenu.subscribe((res: number) => {
@@ -34,17 +41,25 @@ export class DoseCategoryComponent implements OnInit {
     // this.nameCategory=this.categoryService.getNameCategoryById(this.InputIdCategory);
 
   }
-  addToCart(item:Menu) {
-    // debugger;
-    // this.isMiniCartOpen=true;
-   if(this.visiterOrderManagment.addOrderToCart(item)){
-     alert("הוסף מוצר בהצלחה")
-   } 
-   else 
-   alert("אינך משתמש רשום")
-      
+  checkChooseDose() {
+    return false;
   }
+  addToCart(item: Menu) {
+    if (this.Restaurant) {
+      this.inRestaurant.addToCartInRestaurant(item)
+      const dialogRef = this.dialog.open(DialogForAddToCartComponent)
+      
+    }
+    // this.isMiniCartOpen=true;
+    else if (this.user.CurrentUser) {
+      this.visiterOrderManagment.addOrderToCart(item)
+      const dialogRef = this.dialog.open(DialogForAddToCartComponent)
+      
+    }
+    else
+      alert("אינך משתמש רשום")
 
+  }
   getMenuDetails() {
 
     this.menuService.getMenuByCategory(this.InputIdCategory).subscribe(

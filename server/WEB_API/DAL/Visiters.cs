@@ -29,6 +29,7 @@ namespace DAL
         public string Mail { get; set; }
         public string Password { get; set; }
         public string NameUser { get; set; }
+        public Nullable<System.DateTime> lastDateEnter { get; set; }
     
         public virtual Address Address1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

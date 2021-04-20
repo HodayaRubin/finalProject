@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+
+        <button mat-raised-button *ngIf="worker" [matBadge]="numNewMessege" [matBadgeHidden]="hidden" (click)="toggleBadgeVisibility()">
+            <mat-icon >mail_outline</mat-icon>
+        </button>
+        <div *ngIf='userService.singIn' class="userName">
+            <mat-icon>account_circle </mat-icon>
+            שלום {{userService.userName}}
+            <div *ngIf="!degree"> תאריך כניסה אחרונה :{{userService.CurrentUser.lastDateEnter |date : "d/M/yy HH:mm" }}</div>
+        </div>
+        <span *ngIf="degree">{{worker?"כניסת עובד":"כניסת מנהל"}}</span>
+        <button mat-button class="user-enter" *ngIf='!userService.singIn' (click)="openBottomSheetSignin()">הרשם</button>
+        <button *ngIf='!userService.singIn' mat-button class="user-enter" (click)="openBottomSheetLogin()">התחבר</button>
+        <button *ngIf='userService.singIn' mat-button class="user-enter" (click)="getOut()">
+            <mat-icon>exit_to_app</mat-icon>
+            יציאה
+        </button>
+        <!-- <mat-icon>account_box</mat-icon>
+        <button mat-button class="user-enter" (click)="openBottomSheetSignin()">הרשם</button>
+        <button mat-button class="user-enter" (click)="openBottomSheetLogin()">התחבר</button> -->
+
+    </mat-toolbar-row>
+</mat-toolbar>

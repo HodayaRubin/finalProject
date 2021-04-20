@@ -15,15 +15,33 @@ import { VisitersOrderManagementService } from 'src/app/shared/services/visiters
 
 export class MenuComponent implements OnInit {
 
-  @Input()isMiniCartOpen : boolean= false;
+  @Input() IsInRestaurant: boolean=false;
+  @Input() option: string;
+  @Input() isMiniCartOpen: boolean = false;
+  optionDetails: string;
+  InRestaurant:boolean;
 
-  constructor(private visitersOrderManagementService:VisitersOrderManagementService){
 
+  constructor(private visitersOrderManagementService: VisitersOrderManagementService) {
+  this.InRestaurant=this.IsInRestaurant
   }
   ngOnInit(): void {
-   
+
+    if (this.option == "איסוף מהסניף") {
+      this.optionDetails = "זמן הגעה עד כ: 105 דקות";
+      this.visitersOrderManagementService.idStatusInvent=3;
+    }
+    else if (this.option == "משלוח") {
+      this.optionDetails = "זמן הכנה עד כ: 30 דקות";
+      this.visitersOrderManagementService.idStatusInvent=2;
+
+    }
+    else 
+      this.optionDetails = " ";
+      this.visitersOrderManagementService.idStatusInvent=1;
+
   }
-  cartIsEmpty(){
+  cartIsEmpty() {
     return this.visitersOrderManagementService.cartIsEmpty();
   }
 

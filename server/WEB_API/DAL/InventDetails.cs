@@ -14,10 +14,10 @@ namespace DAL
     
     public partial class InventDetails
     {
+        public int Id { get; set; }
         public int IdDose { get; set; }
         public int IdMenu { get; set; }
         public int amount { get; set; }
-        public int Id { get; set; }
     
         public virtual InventDose InventDose { get; set; }
         public virtual Menu Menu { get; set; }

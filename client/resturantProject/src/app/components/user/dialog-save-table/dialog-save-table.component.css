@@ -1,0 +1,24 @@
+.save-table {
+    text-align: center;
+}
+
+img {
+    width: 55%;
+    position: relative;
+    top: -26%;
+}
+
+p {
+    position: relative;
+    left: 11%;
+    top: 76px;
+    font-size: x-large;
+    width: 25%;
+    text-align: center;
+}
+
+.img {
+    text-align: end;
+    background-color: whitesmoke;
+    height: 199px;
+}
