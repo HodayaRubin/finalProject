@@ -1,10 +1,7 @@
 <div class="main_sidebar">
-    <div class="category-div" *ngFor="let item of categoryList" (click)=" getMenuDetails(item.id) ">
-        <div class='image-div'>
-            <img class='image' [src]="'../../assets/images/category/'+item.id+'.jpg'">
-        </div>
-        <div class="text">
+    <mat-selection-list [multiple]="false" class="cats_list">
+        <mat-list-option *ngFor="let item of categoryList" (click)=" getMenuDetails(item.id) ">
             {{item.nameCategory}}
-        </div>
-    </div>
+        </mat-list-option>
+    </mat-selection-list>
 </div>

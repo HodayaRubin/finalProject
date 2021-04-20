@@ -21,50 +21,24 @@ namespace WEB_API.Controllers
         }
 
         // GET: api/Category/5
-        [HttpGet]
-        [Route("GetCategoryName/{id}")]
-        public CategoryDTO Get(int id)
+        public string Get(int id)
         {
-            return CategoryBL.GetById(id);
+            return "value";
         }
-
 
         // POST: api/Category
-        [HttpPost]
-        [Route("AddCategory")]
-        public void Post([FromBody] CategoryDTO category)
+        public void Post([FromBody]string value)
         {
-            CategoryBL.Add(category);
         }
 
-        [HttpPost]
-        [Route("UpdateCategory")]
-        public void update([FromBody] CategoryDTO category)
+        // PUT: api/Category/5
+        public void Put(int id, [FromBody]string value)
         {
-            CategoryBL.Update(category);
         }
 
         // DELETE: api/Category/5
-        [HttpPost]
-        [Route("DeleteCategory")]
-        public void Delete([FromBody] CategoryDTO category)
+        public void Delete(int id)
         {
-            CategoryBL.Delete(category);
         }
-
-        [Route("GetNewCategoryList")]
-        public IHttpActionResult GetNewCategoryList()
-        {
-            return Ok(CategoryBL.GetNewCategoryList());
-        }
-        [Route("GetFavoriteCategoryList")]
-        public IHttpActionResult GetFavoriteCategoryList()
-        {
-            return Ok(CategoryBL.GetFavoriteCategoryList());
-
-        }
-
-
-
     }
 }

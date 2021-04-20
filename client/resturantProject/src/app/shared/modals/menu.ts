@@ -6,6 +6,5 @@ export class Menu {
     description:string;
     category:number;
     image:string;
-    ImageBase64:string;
-    amount:number=1;
+    
 }

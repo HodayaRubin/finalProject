@@ -8,7 +8,6 @@ import { MatTreeNode } from '@angular/material/tree';
 })
 export class GiftcardContactComponent  implements OnInit {
 
-  kind:string="שוברי מתנה";
   constructor() { }
 
   ngOnInit(): void {

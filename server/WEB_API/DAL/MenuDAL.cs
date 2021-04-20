@@ -54,10 +54,7 @@ namespace DAL
 
             using (restaurantEntities db = new restaurantEntities())
             {
-                var m = db.Menu.FirstOrDefault(p => p.Id == menu.Id);
-                m.NameDose = menu.NameDose;
-                m.Price = menu.Price;
-                m.InventDetails = menu.InventDetails;
+                db.Entry(menu).State = EntityState.Modified;
                 db.SaveChanges();
             }
         }
@@ -66,8 +63,7 @@ namespace DAL
         {
             using (restaurantEntities db = new restaurantEntities())
             {
-                var m = db.Menu.FirstOrDefault(p => p.Id == menu.Id);
-                db.Menu.Remove(m);
+                db.Menu.Remove(menu);
                 db.SaveChanges();
             }
         }

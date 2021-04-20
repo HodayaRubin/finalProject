@@ -11,6 +11,5 @@ namespace DTO
         public int IdDose { get; set; }
         public int IdMenu { get; set; }
         public int Amount { get; set; }
-        public string MenuName { get; set; }
     }
 }

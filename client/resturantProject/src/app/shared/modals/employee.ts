@@ -4,7 +4,6 @@ export class Employee {
     LastName: string;
     Tz: string;
     Phone: string;
-    idEmployeeType: number;
-    Address: any;
+    IdEmployeeType: string;
 
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-my-presence',
@@ -7,12 +6,10 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./my-presence.component.css']
 })
 export class MyPresenceComponent implements OnInit {
-  profile:any
 
-  constructor(public ser:UserService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.profile=this.ser.CurrentUser;
   }
 
 }

@@ -2,11 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\BL",
-    "\\BL\\cast",
-    "\\DTO",
-    "\\WEB_API",
-    "\\WEB_API\\Controllers"
+    "\\WEB_API"
   ],
-  "SelectedNode": "\\BL\\EmployeesBL.cs",
+  "SelectedNode": "\\WEB_API\\Controllers",
   "PreviewInSolutionExplorer": false
 }

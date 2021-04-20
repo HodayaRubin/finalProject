@@ -1,47 +1,13 @@
-<div class="comment">
-    <div class="title">הוספת חוות דעת למערכת </div>
-    <div class="textarea">
-        <mat-form-field appearance="outline">
-            <mat-label>תוכן</mat-label>
-            <textarea matInput [(ngModel)]="commentContent"></textarea>
-        </mat-form-field>
-    </div>
-    <div class="slider">
-        <mat-slider [(ngModel)]="value" thumbLabel [displayWith]="formatLabel" tickInterval="1000" min="1" max="100000"></mat-slider>
-    </div>
-    <button class="sent-comment" mat-flat-button color="primary" (click)="sendComment()"> שלח </button>
-
+<p>previous-orders works!</p>
+<!-- <div *ngFor="let order of preOrders">
+    <div *ngIf="order">
+        <p>{{order.id}}</p>
+        <ul>
+            <li *ngFor="let detail of order.inventDetails">
+                {{detail.idDose}}
+                 <app-star [starId]="'star'+detail.idMenu" [rating1]="hoverState||rating" (starEnter)="onStarEnter($event)" (starLeave)="onStarLeave()" (starClicked)="onStarClicked($event)">
+                </app-star> 
+</li>
+</ul>
 </div>
-<mat-card *ngFor="let order of preOrders">
-    <mat-card-header>
-        <mat-card-title>
-            <span>
-                מספר הזמנה :{{order.id}}
-            </span>
-        </mat-card-title>
-        <mat-card-subtitle>
-            <span>תאריך הזמנה: {{order.dateInvent|date : "d/M/yy HH:mm"}}</span>
-            <span>סטטוס: {{order.statusName}}</span>
-        </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <hr>
-        <div *ngFor="let detail of order.inventDetails">
-            <ol></ol>
-            <span>שם מנה :{{detail.menuName}}</span>
-            <span>כמות הזמנה: {{detail.amount}}</span>
-        </div>
-    </mat-card-content>
-    <mat-card-actions>
-        <ngb-rating [(rate)]="order.currentRate" (click)="saveRating(order,order.currentRate)">
-            <ng-template let-fill="fill" let-index="index">
-                <span class="star" [class.filled]="fill === 100" [class.bad]="index <2">&#9733;</span>
-            </ng-template>
-        </ngb-rating>
-
-        <button mat-flat-button color="primary" (click)="addFeedback(order)">הוסף המלצה <mat-icon>thumb_up</mat-icon> </button>
-    </mat-card-actions>
-    <div *ngIf="order.feedback">
-        הומלץ ע"י : {{order.feedback}}
-    </div>
-</mat-card>
+</div> -->

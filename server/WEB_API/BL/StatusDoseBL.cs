@@ -28,11 +28,6 @@ namespace BL
         {
             return StatusDoseCast.ToDTO(StatusDoseDAL.GetById(id));
         }
-        public static string GetByIdStatusInventDose(int id)
-        {
-            var status= StatusDoseCast.ToDTOStatusInvent(StatusDoseDAL.GetByIdStatusInvent(id));
-            return status.Kind;
-        }
         public static StatusDoseDTO GetByDescription(string description)
         {
             return GetAll().FirstOrDefault(s => s.DescriptionStatusDose == description);

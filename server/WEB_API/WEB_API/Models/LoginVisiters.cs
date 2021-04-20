@@ -9,6 +9,5 @@ namespace WEB_API.Models
     {
         public string Username { get; set; }
         public string Password { get; set; }
-        public DateTime LastdateEnter { get; set; }
     }
 }

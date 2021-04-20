@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class CategoryDAL
+  public  class CategoryDAL
     {
         //get all
         public static List<Category> GetAll()
@@ -28,7 +28,6 @@ namespace DAL
 
 
         }
-
         //add
         public static void Add(Category Category)
         {
@@ -44,8 +43,7 @@ namespace DAL
 
             using (restaurantEntities db = new restaurantEntities())
             {
-                var c = db.Category.FirstOrDefault(p => p.Id == Category.Id);
-                c.nameCategory = Category.nameCategory;
+                db.Entry(Category).State = EntityState.Modified;
                 db.SaveChanges();
             }
         }
@@ -54,15 +52,7 @@ namespace DAL
         {
             using (restaurantEntities db = new restaurantEntities())
             {
-
-                var m = db.Menu.Where(x => x.Category == Category.Id).ToList();
-                if (m != null)
-                    foreach (var item in m)
-                    {
-                        db.Menu.Remove(item);
-                    }
-                var c = db.Category.FirstOrDefault(C => C.Id == Category.Id);
-                db.Category.Remove(c);
+                db.Category.Remove(Category);
                 db.SaveChanges();
             }
         }

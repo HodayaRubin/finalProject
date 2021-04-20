@@ -15,7 +15,6 @@ namespace DTO
         public int Category { get; set; }
         public string Description { get; set; }
         public string image { get; set; }
-        public string ImageBase64 { get; set; }
 
     }
 }

@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cast\CategoryCast.cs" />
-    <Compile Include="cast\CommentVisiterCast.cs" />
     <Compile Include="cast\CurrentEmployeeCast.cs" />
     <Compile Include="cast\EmployeesCast.cs" />
     <Compile Include="cast\EmployeesTypesCast.cs" />
@@ -57,16 +56,12 @@
     <Compile Include="cast\RatingCast.cs" />
     <Compile Include="cast\StatusDoseCast.cs" />
     <Compile Include="cast\TablesCast.cs" />
-    <Compile Include="cast\UserCalandar.cs" />
     <Compile Include="cast\VipTablesCast.cs" />
     <Compile Include="cast\VisitersCast.cs" />
     <Compile Include="CategoryBL.cs" />
-    <Compile Include="Email.cs" />
-    <Compile Include="CommentVisiterBL.cs" />
     <Compile Include="CurrentEmployeeBL.cs" />
     <Compile Include="EmployeesBL.cs" />
     <Compile Include="EmployeesTypesBL.cs" />
-    <Compile Include="HelpMessage.cs" />
     <Compile Include="InventDoseBL.cs" />
     <Compile Include="MenuBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,8 +81,6 @@
       <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="title.png" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -57,16 +57,13 @@ namespace DAL
             }
         }
 
-        public static int GetRate(int? doseId)
+        public static int GetRate(int doseId)
         {
             using (restaurantEntities db = new restaurantEntities())
             {
-                var d = db.Rating.Where(p => p.doseId == doseId).ToList();
-                var sum = d.Sum(p => p.rate);
+              var d=  db.Rating.Where(p => p.doseId == doseId).ToList();
+              var sum = d.Sum(p => p.rate);
                 var cou = d.Count;
-                var dos = db.Menu.First(p => p.Id == doseId);
-                dos.RateDose = sum / cou;
-                db.SaveChanges();
                 return (int)sum / cou;
             }
         }

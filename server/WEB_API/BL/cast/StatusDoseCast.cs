@@ -19,14 +19,6 @@ namespace BL.cast
                 IdDose=item.Id
             };
         }
-        public static StatusInventDose ToDTOStatusInvent(StatusInvent item)
-        {
-            return new StatusInventDose()
-            {
-                Kind = item.Kind,
-                Id = item.Id
-            };
-        }
 
         //list to dto
         public static List<StatusDoseDTO> ListToDTO(List<StatusDose> list)

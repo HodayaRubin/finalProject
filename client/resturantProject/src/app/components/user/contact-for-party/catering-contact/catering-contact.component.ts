@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CateringContactComponent implements OnInit {
 
-  kind:string="קייטרינג";
   constructor() { }
 
   ngOnInit(): void {

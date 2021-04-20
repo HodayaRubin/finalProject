@@ -23,18 +23,9 @@ namespace DAL
 
             using (restaurantEntities db = new restaurantEntities())
             {
-                var statusDose = db.StatusDose.Find(id);
-                return statusDose;
+                return db.StatusDose.Find(id);
             }
 
-        }
-        public static StatusInvent GetByIdStatusInvent(int id)
-        {
-
-            using (restaurantEntities db = new restaurantEntities())
-            {
-                return db.StatusInvent.Find(id);
-            }
 
         }
         //add

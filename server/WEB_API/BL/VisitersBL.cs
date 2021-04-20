@@ -27,9 +27,9 @@ namespace BL
 
 
 
-        public static VisitersDTO GetById(int id)
+        public static List<VisitersDTO> GetById(int id)
         {
-            return VisitersCast.ToDTO(VisitersDAL.GetById(id));
+            return VisitersCast.ListToDTO(VisitersDAL.GetById(id));
         }
         public static VisitersDTO Add(VisitersDTO visiters)
         {
@@ -38,7 +38,7 @@ namespace BL
         public static VisitersDTO Login(string username, string password)
         {
             return VisitersCast.ToDTO(
-                VisitersDAL.GetByPassword(username, password));
+                VisitersDAL.GetAll().FirstOrDefault(p => p.Password == password && p.NameUser == username));
         }
 
         public static VisitersDTO SignUp(string FirstName, string LastName, string Mail, string username, string password)

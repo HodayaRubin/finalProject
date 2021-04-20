@@ -18,63 +18,21 @@ namespace BL
             return CategoryCast.ListToDTO(CategoryDAL.GetAll());
         }
 
-        public static void Update(CategoryDTO category)
+        public static void Update(CategoryDTO employeesTypes)
         {
-            CategoryDAL.Update(CategoryCast.ToDAL(category));
+            CategoryDAL.Update(CategoryCast.ToDAL(employeesTypes));
         }
-        public static void Delete(CategoryDTO category)
+        public static void Delete(CategoryDTO employeesTypes)
         {
-            CategoryDAL.Delete(CategoryCast.ToDAL(category));
+            CategoryDAL.Delete(CategoryCast.ToDAL(employeesTypes));
         }
         public static CategoryDTO GetById(int id)
         {
             return CategoryCast.ToDTO(CategoryDAL.GetById(id));
         }
-     
-        public static void Add(CategoryDTO category)
+        public static void Add(CategoryDTO employeesTypes)
         {
-            CategoryDAL.Add(CategoryCast.ToDAL(category));
+            CategoryDAL.Add(CategoryCast.ToDAL(employeesTypes));
         }
-        public static List<CategoryDTO> GetNewCategoryList()
-        {
-            using (restaurantEntities db = new restaurantEntities())
-            {
-                List<MenuDTO> lNewMenu = MenuBL.GetANewMenu();
-                List<Category> Listnew = new List<Category>();
-                foreach (var item in lNewMenu)
-                {
-                    var r = Listnew.FirstOrDefault(x => x.Id == item.Category);
-                    if (r==null)
-                    {
-                        Listnew.Add(db.Category.FirstOrDefault(x => x.Id == item.Category));
-
-                    }
-                }
-                //List<Category> List = db.Category.Where(x => lFNewMenu.Any(y => x.Id == y.Category)).ToList();
-                return CategoryCast.ListToDTO(Listnew);
-            }
-
-        }
-        public static List<CategoryDTO> GetFavoriteCategoryList()
-        {
-            using (restaurantEntities db = new restaurantEntities())
-            {
-                List<MenuDTO> lfMenu = MenuBL.GetFavoriteMenu();
-                List<Category> Listnew = new List<Category>();
-                foreach (var item in lfMenu)
-                {
-                    var r = Listnew.FirstOrDefault(x => x.Id == item.Category);
-                    if (r == null)
-                    {
-                        Listnew.Add(db.Category.FirstOrDefault(x => x.Id == item.Category));
-
-                    }
-                }
-                //List<Category> List = db.Category.Where(x => lNewMenu.Any(y => x.Id == y.Category)).ToList();
-                return CategoryCast.ListToDTO(Listnew);
-            }
-
-        }
-        
     }
 }

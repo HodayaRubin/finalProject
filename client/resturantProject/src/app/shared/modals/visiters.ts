@@ -1,11 +1,12 @@
 export class Visiters {
-    ld: number;
-    FirstName: string;
-    LastName: string;
-    Phone: string;
-    Address: string;
-    IdTable: number;
-    Password: string;
-    address: string;
-    NameUser: string;
+    id:number;
+    mail: string;
+    firstName: string;
+    lastName: string;
+    password: string;
+    nameUser: string;
+    phone:string;
+    address:string;
+    idTable:number;
 }
+ 
